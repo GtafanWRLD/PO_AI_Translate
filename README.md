@@ -39,10 +39,7 @@ THIS IS NOT THE FULL RELEASE YET. ISSUES ARE EXPECTED IF YOU TRANSLATE TO OTHER 
 
 1. Place your `.po` files into the `input/` folder.
 2. Make sure `key.txt` contains your OpenAI API key (one line, starts with `sk-`).
-3. Run the script:
-   ```bash
-   python po_translator_gpt3.5_pre_release.py
-   ```
+3. Run the .exe file
 4. Translated `.po` files will appear in the `output/` folder.
 
 ---
