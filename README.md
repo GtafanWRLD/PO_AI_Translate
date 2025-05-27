@@ -1,77 +1,71 @@
-# MirTankov AI Powered PO Translator
+# GPT PO Translator 
 
-A Python tool to batch-translate .po (Portable Object) localization files for games (Used for MirTankov localization project), optimized for mixed English/Russian/Chinese projects.
-
-- ⚡ Only translates lines that are NOT already in English—saving time and reduces API requests !
-- 🏷️ Preserves all in-game tags and formatting (like %(tank)s, {player}, etc.)
-- 🪖 Uses World of Tanks terminology by default, can be changed by the user.
-- 📁 Processes every .po file in your `input/` folder, outputs to `translated/`.
+This is a translation automation tool that batch-translates `.po` files using OpenAI's GPT-3.5 or Claude APIs. It is optimized for localizing game UI strings, particularly from Russian to English.
 
 ---
 
-## Features
+## 🔧 Features
 
-- Batch translates `.po` files from Russian or Chinese to English using OpenAI GPT-3.5-turbo (model can be changed, currently this is the cheapest one)
-- Automatically skips already-English lines
-- Maintains line breaks and multi-line formatting
-- Auto-creates `input/` and `translated/` folders on first run
+- Translates `.po` files in bulk with GPT-3.5
+- Skips English and empty strings automatically
+- Multi-threaded batch processing (configurable)
+- Auto-detects Cyrillic and avoids unnecessary API calls
+- Detects strings that likely don't need translation using heuristics
 
 ---
-## Requirements
 
-- Python 3.8+
-- pip packages: `openai polib tqdm send2trash langdetect`
-- IMPORTANT: OpenAI API key (set as env variable `OPENAI_API_KEY` or in a `key.txt` file)
+## 🗂 Folder Structure
 
-Install requirements:
-```sh
-pip install openai polib tqdm send2trash langdetect
+```
+project/
+│
+├── po_translator_gpt3.5_claude.py
+├── input/             ← Put your `.po` files here
+└── output/            ← Translated files will be saved here
 ```
 
 ---
 
-## Usage
+## ⚙️ Requirements
 
-1. Place your `.po` files in the `input/` folder (auto-created if missing).
-2. Add your OpenAI API key to an environment variable `OPENAI_API_KEY` or create a `key.txt` in the script's directory.
-3. Run the script:
+- Python 3.7+
+- `openai`, `tqdm`, `langdetect`
 
-```sh
-python your_script_name.py
+Install dependencies:
+
+```bash
+pip install openai tqdm langdetect
 ```
 
-4. All translated files will appear in the `translated/` folder, with the same filenames.
-
-**Already-English lines will not be re-translated.**
+Also make sure you have `key.txt` in the same folder containing your OpenAI API key.
 
 ---
 
-## Configuration
+## 🚀 How To Use
 
-Edit these at the top of the script:
+1. Run the script:
+   ```bash
+   python po_translator_gpt3.5.py
+   ```
 
-```python
-OPENAI_MODEL = "gpt-3.5-turbo"  # (recommended: do not change unless you want to pay more)
-BATCH_SIZE = 50                  # Lower if you see output mismatch; raise for speed if no issues, values up to 80 are safe
-INPUT_FOLDER = "input"
-OUTPUT_FOLDER = "translated"
-```
+2. If `input/` folder doesn't exist, it will be created.
 
----
+3. Drop `.po` files into the `input/` folder.
 
-## FAQ / Troubleshooting
-
-**Q: Why are some placeholders like %(tank)s not working?**  
-> This tool  should mask and restore all such placeholders, so if you spot issues, create an issue report.
-
-**Q: My translated file is missing lines or seems misaligned!**  
-> Lower `BATCH_SIZE` to 10 or even 1 for stubborn files. GPT sometimes skips or merges lines in big batches (not the case for MirTankov).
-
-**Q: Does this tool handle big .po files?**  
-> Yes, but watch your OpenAI API usage. Large files = higher costs. Already-English lines are skipped automatically. The limit is around 200k characters per file.
+4. Script will process and generate output in `output/`.
 
 ---
 
-## Credits
-- Script & README: [Gtafan]
-- Powered by [OpenAI GPT-3.5-turbo](https://platform.openai.com/docs/models/gpt-3-5)
+## 📈 Stats Tracked
+
+- Total blocks processed
+- Skipped English strings
+- Skipped empty strings
+- Translated Russian strings
+- API calls saved
+
+---
+
+## 📄 License
+
+MIT License
