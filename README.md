@@ -1,4 +1,4 @@
-# 📝 PO GPT Translator
+# 📝 PO AI Translator
 
 A powerful localization automation tool for translating `.po` files from **Russian into over 30 languages** using **OpenAI GPT-3.5**. Designed to preserve formatting, optimize performance, and reduce redundant translations.
 
