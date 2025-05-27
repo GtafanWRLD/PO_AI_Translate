@@ -1,71 +1,70 @@
-# GPT PO Translator 
+# 📝 PO GPT Translator –
 
-This is a translation automation tool that batch-translates `.po` files using OpenAI's GPT-3.5 or Claude APIs. It is optimized for localizing game UI strings, particularly from Russian to English.
-
----
-
-## 🔧 Features
-
-- Translates `.po` files in bulk with GPT-3.5
-- Skips English and empty strings automatically
-- Multi-threaded batch processing (configurable)
-- Auto-detects Cyrillic and avoids unnecessary API calls
-- Detects strings that likely don't need translation using heuristics
+A powerful localization automation tool for translating `.po` files from **Russian into over 30 languages** using **OpenAI GPT-3.5**. Designed to preserve formatting, optimize performance, and reduce redundant translations.
 
 ---
 
-## 🗂 Folder Structure
 
-```
-project/
-│
-├── po_translator_gpt3.5_claude.py
-├── input/             ← Put your `.po` files here
-└── output/            ← Translated files will be saved here
-```
+## ⚠️ WARNING
+
+THIS IS NOT THE FULL RELEASE YET. ISSUES ARE EXPECTED IF YOU TRANSLATE TO OTHER LANGUAGES THAN ENGLISH. IF YOU ENCOUNTER ISSUES PLEASE MAKE AN ISSUE REPORT.
 
 ---
 
-## ⚙️ Requirements
+
+## ✅ Features
+
+1. **🌍 Multi-language support**
+   - Translate `.po` files from Russian into any language, selected dynamically at runtime.
+   - Supports 30+ languages with customizable language code and name.
+
+2. **🚀 Optimized Translation Pipeline**
+   - Uses OpenAI GPT-3.5 for batch translations.
+   - Batching, multithreading, and retry logic for efficiency.
+
+3. **📦 Intelligent Skipping**
+   - Automatically skips strings already in English or empty.
+
+4. **⚙️ User Configuration**
+   - First-time setup wizard to configure batch size, max threads, and more.
+   - All settings saved to `config.json` (except language, chosen each run).
+
+5. **🛠 Format-Preserving Output**
+   - Handles multiline `msgstr`, variables like `%d`, `{0}`, `%(goal)s`, and escape characters.
+   - Maintains exact formatting required by using gettext .
+
+---
+
+## 📁 Usage
+
+1. Place your `.po` files into the `input/` folder.
+2. Make sure `key.txt` contains your OpenAI API key (one line, starts with `sk-`).
+3. Run the script:
+   ```bash
+   python po_translator_gpt3.5_pre_release.py
+   ```
+4. Translated `.po` files will appear in the `output/` folder.
+
+---
+
+## 🛠 Requirements
 
 - Python 3.7+
-- `openai`, `tqdm`, `langdetect`
-
-Install dependencies:
-
-```bash
-pip install openai tqdm langdetect
-```
-
-Also make sure you have `key.txt` in the same folder containing your OpenAI API key.
+- Required packages:
+  ```
+  pip install openai tqdm langdetect
+  ```
 
 ---
 
-## 🚀 How To Use
+## 📄 Notes
 
-1. Run the script:
-   ```bash
-   python po_translator_gpt3.5.py
-   ```
-
-2. If `input/` folder doesn't exist, it will be created.
-
-3. Drop `.po` files into the `input/` folder.
-
-4. Script will process and generate output in `output/`.
+- API key must be stored in a `key.txt` file.
+- Language selection is interactive at every launch.
+- Designed for gaming localization: uses terminology like battle, tank, armor, etc.
 
 ---
 
-## 📈 Stats Tracked
-
-- Total blocks processed
-- Skipped English strings
-- Skipped empty strings
-- Translated Russian strings
-- API calls saved
-
----
-
-## 📄 License
+## 📃 License
 
 MIT License
