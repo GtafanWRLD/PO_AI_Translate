@@ -5,11 +5,9 @@ A powerful localization automation tool for translating `.po` files from **Russi
 ---
 
 
-## ⚠️ WARNINGS
+## ⚠️ WARNING
 
-1. THIS IS NOT THE FULL RELEASE YET. ISSUES ARE EXPECTED IF YOU TRANSLATE TO OTHER LANGUAGES THAN ENGLISH. IF YOU ENCOUNTER ISSUES PLEASE MAKE AN ISSUE REPORT.
-
-2. DUE TO USAGE OF OPEN AI API THE TRANSLATOR ISN'T FREE. HOWEVER IN THE FUTURE I MIGHT WORK ON USING GOOGLE API WHICH IS FREE TO SOME EXCENT OR IMPLEMENT CHEAPER DEEPSEEK.
+- I am not actively supporting development of this version — check out the cheaper Deepseek variant here: [PoDeepSeekTranslate](https://github.com/GtafanWRLD/PoDeepSeekTranslate).
 
 ---
 
@@ -62,7 +60,11 @@ A powerful localization automation tool for translating `.po` files from **Russi
 - Language selection is interactive at every launch.
 - Designed for gaming localization: uses terminology like battle, tank, armor, etc.
 
+
 ---
+
+
+
 
 ## 📃 License
 
